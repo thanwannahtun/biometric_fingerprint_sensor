@@ -1,0 +1,54 @@
+name: ZKFPBindings
+description: "FFI bindings for ZK Fingerprint SDK"
+output: lib/zkfp_bindings.dart
+
+language: "c"
+
+llvm-path:
+  - "C:/Program Files/LLVM/bin"
+
+headers:
+  entry-points:
+    #    - 'C:/Users/thanwannahtun/AndroidStudioProjects/fingerprint_flutter/windows/libzkfp/include/zkfp_wrapper.h'
+    - "C:/Users/thanwannahtun/Downloads/zkfinger_sdk/ZKFingerSDK_Windows_Standard/ZKFinger Standard SDK 5.3.0.33/c/libs/include/libzkfp.h"
+
+compiler-opts:
+  # SDK include paths
+  - "-IC:/Users/thanwannahtun/AndroidStudioProjects/fingerprint_flutter/windows/libzkfp/include"
+  - "-IC:/Users/thanwannahtun/Downloads/zkfinger_sdk/ZKFingerSDK_Windows_Standard/ZKFinger_Standard_SDK_5.3.0.33/c/libs/include"
+
+  # LLVM’s built-in headers
+  #  - "-IC:/Program Files/LLVM/lib/clang/21/include"
+  - "-IC:/Progra~1/LLVM/lib/clang/21/include"
+  #  - "\"C:/Program Files/LLVM/lib/clang/21/include\""
+  # Preprocessor defines
+  - "-DUNICODE"
+  - "-D_UNICODE"
+
+
+functions:
+  include:
+    - '^ZKFPM_.*'   # Only include ZK Fingerprint functions
+structs:
+  include:
+    - '^ZKFP_.*'    # Only include fingerprint SDK structs
+    - '^FP_.*'      # (adjust based on SDK headers)
+enums:
+  include:
+    - '^ZKFP_.*'
+
+
+
+
+
+
+
+
+
+
+
+
+#include "C:/Users/thanwannahtun/Downloads/zkfinger_sdk/ZKFingerSDK_Windows_Standard/ZKFinger Standard SDK 5.3.0.33/c/libs/include/libzkfp.h"
+#include "C:/Users/thanwannahtun/Downloads/zkfinger_sdk/ZKFingerSDK_Windows_Standard/ZKFinger Standard SDK 5.3.0.33/c/libs/include/libzkfptype.h"
+#include "C:/Users/thanwannahtun/Downloads/zkfinger_sdk/ZKFingerSDK_Windows_Standard/ZKFinger Standard SDK 5.3.0.33/c/libs/include/libzkfperrdef.h"
+#include "C:/Users/thanwannahtun/Downloads/zkfinger_sdk/ZKFingerSDK_Windows_Standard/ZKFinger Standard SDK 5.3.0.33/c/libs/include/zkinterface.h"
