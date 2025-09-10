@@ -33,6 +33,10 @@ class ZKFingerService {
     return false;
   }
 
+  bool isDeviceOpen() {
+    return _deviceHandle != null;
+  }
+
   void closeDevice() {
     if (_deviceHandle != null) {
       _lib.closeDevice(_deviceHandle!);
@@ -146,7 +150,7 @@ class ZKFingerService {
 
       final height = heightPtr.value;
       final width = widthPtr.value;
-      print("🟢 Device image size: $width x $height ");
+      debugPrint("🟢 Device image size: $width x $height ");
 
       // Allocate memory for the buffers inside the arena
       // FIX: Initialize tmplSize as a single Uint32 with the value 2048
@@ -189,7 +193,7 @@ class ZKFingerService {
 
         return CaptureResult(tmpl, pngBytes);
       } else {
-        print("❌ Capture template failed with code $r");
+        debugPrint("❌ Capture template failed with code $r");
         return null;
       }
       // The arena and all its allocations are freed automatically here.
@@ -254,26 +258,23 @@ class ZKFingerService {
     Uint8List collectedTemplat,
     Uint8List collectedTemplat2,
     Uint8List collectedTemplat3,
-  ) {}
+  ) {
+    // ToDo : Bind
+  }
 
   void getParameters(
     int deviceHandle,
     int i,
     Pointer<NativeType> cast,
     Pointer<Uint32> pointer,
-  ) {}
-}
-
-class FingerprintCapture {
-  final Uint8List image; // raw fingerprint bitmap
-  final Uint8List template; // fingerprint template
-
-  FingerprintCapture({required this.image, required this.template});
+  ) {
+    // ToDo : Bind
+  }
 }
 
 class CaptureResult {
-  final Uint8List template;
-  final Uint8List image;
+  final Uint8List template; // fingerprint template
+  final Uint8List image; // raw fingerprint bitmap
 
   CaptureResult(this.template, this.image);
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'examples/fingerprint_page.dart';
 import 'examples/register_fingerprint_page.dart';
 
 void main() {
@@ -42,21 +41,19 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => FingerprintPage()),
-                );
-              },
-              child: Text("Initialize"),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => RegisterFingerprintPage(),
-                  ),
+                showDialog(
+                  context: context,
+                  builder:
+                      (context) => Dialog(
+                        child: Container(
+                          color: Colors.amber,
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          height: MediaQuery.of(context).size.height * 0.8,
+                          child: RegisterFingerprintPage(),
+                        ),
+                      ),
                 );
               },
               child: Text("Register Fingerprint"),
